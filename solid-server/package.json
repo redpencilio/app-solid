@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "start": "npx community-solid-server -c config-mashlib-sparql.json -s http://localhost:8890/sparql",
+    "start:dev": "npx community-solid-server -c config-mashlib-dev.json"
+  },
+  "dependencies": {
+    "@solid/community-server": "^3.0.0",
+    "@solid/community-server-metadata-extender": "^3.0.0",
+    "mashlib": "^1.8.0"
+  }
+}
