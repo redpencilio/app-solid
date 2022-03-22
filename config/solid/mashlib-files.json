@@ -11,7 +11,7 @@
     "files-scs:config/http/handler/default.json",
     "files-scs:config/http/middleware/websockets.json",
     "files-scs:config/http/server-factory/websockets.json",
-    "files-scs:config/http/static/default.json",
+
     "files-scs:config/identity/access/public.json",
     "files-scs:config/identity/email/default.json",
     "files-scs:config/identity/handler/default.json",
@@ -97,6 +97,28 @@
       "options_dctModified": true,
       "options_statMtime": true,
       "source": { "@id": "urn:solid-server:default:FileDataAccessor" }
+    },
+
+    {
+      "@context": "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^3.0.0/components/context.jsonld",
+      "@graph": [
+        {
+          "comment": "Stores all new resources for a pod in the default resource store under the generated identifier.",
+          "@id": "urn:solid-server:default:PodManager",
+          "@type": "GeneratedPodManager",
+          "store": { "@id": "urn:solid-server:default:ResourceStore" },
+          "resourcesGenerator": {
+            "@type": "TemplatedResourcesGenerator",
+            "templateFolder": "/templates/pod",
+            "factory": {
+              "@type": "ExtensionBasedMapperFactory"
+            },
+            "templateEngine": {
+              "@type": "HandlebarsTemplateEngine"
+            }
+          }
+        }
+      ]
     }
   ]
 }

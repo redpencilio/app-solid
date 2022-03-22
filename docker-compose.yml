@@ -9,12 +9,12 @@ services:
     image: redpencil/mashlib-solid-server:0.0.7
     volumes:
       - ./config/solid/:/config/
-      - ./data/solid/:/usr/app/data/
+
+      - ./templates/:/templates/
     environment:
       SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
       CONFIG_FILE: "/config/mashlib-files.json"
       ROOT_FILE_PATH: "./data"
-    restart: always
 
   triplestore:
     image: tenforce/virtuoso:1.3.1-virtuoso7.2.2

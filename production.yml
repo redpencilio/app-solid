@@ -1,5 +1,7 @@
 services:
-  solid:
+  solid-server:
+    volumes:
+      - ./data/solid/:/usr/app/data/
     expose:
       - 3000
     networks:
