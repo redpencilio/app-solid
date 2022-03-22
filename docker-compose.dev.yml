@@ -1,0 +1,7 @@
+services:
+  solid-server:
+    ports:
+      - 3000:3000
+  triplestore:
+    ports:
+      - 8890:8890

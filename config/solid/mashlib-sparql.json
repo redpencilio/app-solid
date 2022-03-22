@@ -38,7 +38,7 @@
   "@graph": [
     {
       "comment": [
-        "A filesystem-based server with Databrowser as UI.",
+        "A sparql server with Databrowser as UI.",
         "Derived from config/file-no-setup.json"
       ]
     },
