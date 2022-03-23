@@ -5,7 +5,7 @@
   ],
   "import": [
     "files-scs:config/app/main/default.json",
-    "files-scs:config/app/init/initialize-root.json",
+
     "files-scs:config/app/setup/disabled.json",
     "files-scs:config/app/variables/default.json",
     "files-scs:config/http/handler/default.json",
@@ -40,6 +40,48 @@
       "comment": [
         "A filesystem-based server with Databrowser as UI.",
         "Derived from config/file-no-setup.json"
+      ]
+    },
+    {
+      "@context": "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^3.0.0/components/context.jsonld",
+      "import": ["files-scs:config/app/init/base/init.json"],
+      "@graph": [
+        {
+          "comment": "These handlers are called whenever the server is started, and can be used to ensure that all necessary resources for booting are available.",
+          "@id": "urn:solid-server:default:ParallelInitializer",
+          "@type": "ParallelHandler",
+          "handlers": [{ "@id": "urn:solid-server:default:RootInitializer" }]
+        }
+      ]
+    },
+
+    {
+      "@context": "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^3.0.0/components/context.jsonld",
+      "@graph": [
+        {
+          "comment": "Makes sure the root container exists and contains the necessary resources.",
+          "@id": "urn:solid-server:default:RootInitializer",
+          "@type": "ConditionalHandler",
+          "storageKey": "rootInitialized",
+          "storageValue": true,
+          "storage": { "@id": "urn:solid-server:default:SetupStorage" },
+          "source": {
+            "@type": "ContainerInitializer",
+            "args_baseUrl": {
+              "@id": "urn:solid-server:default:variable:baseUrl"
+            },
+            "args_path": "/",
+            "args_store": { "@id": "urn:solid-server:default:ResourceStore" },
+            "args_generator": {
+              "@type": "TemplatedResourcesGenerator",
+              "templateFolder": "/templates/root/",
+              "factory": { "@type": "ExtensionBasedMapperFactory" },
+              "templateEngine": { "@type": "HandlebarsTemplateEngine" }
+            },
+            "args_storageKey": "rootInitialized",
+            "args_storage": { "@id": "urn:solid-server:default:SetupStorage" }
+          }
+        }
       ]
     },
 
@@ -119,39 +161,6 @@
           }
         }
       ]
-    },
-    {
-      "@context": "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^3.0.0/components/context.jsonld",
-      "@graph": [
-        {
-          "comment": "Makes sure the root container exists and contains the necessary resources.",
-          "@id": "urn:solid-server:default:RootInitializer",
-          "@type": "ConditionalHandler",
-          "storageKey": "rootInitialized",
-          "storageValue": true,
-          "storage": { "@id": "urn:solid-server:default:SetupStorage" },
-          "source": {
-            "@type": "ContainerInitializer",
-            "args_baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" },
-            "args_path": "/",
-            "args_store": { "@id": "urn:solid-server:default:ResourceStore" },
-            "args_generator": {
-              "@type": "TemplatedResourcesGenerator",
-              "templateFolder": "/templates/root",
-              "factory": { "@type": "ExtensionBasedMapperFactory" },
-              "templateEngine": { "@type": "HandlebarsTemplateEngine" }
-            },
-            "args_storageKey": "rootInitialized",
-            "args_storage": { "@id": "urn:solid-server:default:SetupStorage" }
-          }
-        }
-      ]
-    }
-    
-    {
-      "@id": "urn:solid-server:default:QuotaStrategy",
-      "GlobalQuotaStrategy:_limit_amount": 10000000,
-      "GlobalQuotaStrategy:_limit_unit": "bytes"
     }
   ]
 }
