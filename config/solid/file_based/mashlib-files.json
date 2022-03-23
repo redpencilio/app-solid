@@ -119,6 +119,11 @@
           }
         }
       ]
+    },
+    {
+      "@id": "urn:solid-server:default:QuotaStrategy",
+      "GlobalQuotaStrategy:_limit_amount": 10000000,
+      "GlobalQuotaStrategy:_limit_unit": "bytes"
     }
   ]
 }
