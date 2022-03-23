@@ -2,6 +2,8 @@ services:
   solid-server:
     ports:
       - 3000:3000
+    environment:
+      CONFIG_FILE: "/config/file_based/mashlib-files.dev.json"
   triplestore:
     ports:
       - 8890:8890
