@@ -85,7 +85,7 @@
       "options_inConverter": {
         "@id": "urn:solid-server:default:RepresentationConverter"
       },
-      "options_inType": "internal/quads",
+      "options_inType": "*/*",
       "source": {
         "@type": "DataAccessorBasedStore",
         "identifierStrategy": {
