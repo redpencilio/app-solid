@@ -45,21 +45,49 @@
     {
       "@id": "urn:solid-server:default:ResourceStore_Backend",
       "@type": "RoutingResourceStore",
-      "rule": { "@id": "urn:solid-server:default:RouterRule" }
+      "rule": { "@id": "urn:solid-server:default:DefaultRouterRule" }
+    },
+
+    {
+      "comment": "Send .internal data to file store and other data to ContentTypeRouterRule",
+      "@id": "urn:solid-server:default:DefaultRouterRule",
+      "@type": "RegexRouterRule",
+      "base": { "@id": "urn:solid-server:default:variable:baseUrl" },
+      "storeMap": [
+        {
+          "comment": "Internal storage data",
+          "RegexRouterRule:_storeMap_key": "^/\\.internal/",
+          "RegexRouterRule:_storeMap_value": {
+            "@id": "urn:solid-server:default:FileResourceStore"
+          }
+        },
+        {
+          "comment": "All other data is send to ContentTypeRouterRule",
+          "RegexRouterRule:_storeMap_key": ".*",
+          "RegexRouterRule:_storeMap_value": {
+            "@type": "RoutingResourceStore",
+            "rule": { "@id": "urn:solid-server:default:ContentTypeRouterRule" }
+          }
+        }
+      ]
     },
 
     {
       "comment": "Send supported data to sparql endpoint and all other data to file system",
-      "@id": "urn:solid-server:default:RouterRule",
+      "@id": "urn:solid-server:default:ContentTypeRouterRule",
       "@type": "ConvertingRouterRule",
       "typedStore_store": {
         "@id": "urn:solid-server:default:SparqlResourceStore"
       },
       "typedStore_supportChecker": {
         "@type": "PreferenceSupport",
-        "type": "*/*",
+        "type": "internal/quads",
         "converter": {
-          "@id": "urn:solid-server:default:RepresentationConverter"
+          "@type": "ChainedConverter",
+          "converters": [
+            { "@id": "urn:solid-server:default:RdfToQuadConverter" },
+            { "@id": "urn:solid-server:default:QuadToRdfConverter" }
+          ]
         }
       },
       "defaultStore": {
@@ -85,7 +113,7 @@
       "options_inConverter": {
         "@id": "urn:solid-server:default:RepresentationConverter"
       },
-      "options_inType": "*/*",
+      "options_inType": "internal/quads",
       "source": {
         "@type": "DataAccessorBasedStore",
         "identifierStrategy": {

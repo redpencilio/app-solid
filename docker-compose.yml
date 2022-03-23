@@ -13,7 +13,7 @@ services:
       - ./templates/:/templates/
     environment:
       SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
-      CONFIG_FILE: "/config/mashlib-files.json"
+      CONFIG_FILE: "/config/mashlib-sparql-files.json"
       ROOT_FILE_PATH: "./data"
 
   triplestore:
