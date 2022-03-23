@@ -1,2 +1,4 @@
 data
 node_modules
+production.yml
+/config/solid/account_recovery
