@@ -7,7 +7,7 @@
     "files-scs:config/app/main/default.json",
 
     "files-scs:config/app/setup/disabled.json",
-    "files-scs:config/app/variables/default.json",
+    "/usr/app/config/variables/cli-resolver.json",
     "files-scs:config/http/handler/default.json",
     "files-scs:config/http/middleware/websockets.json",
     "files-scs:config/http/server-factory/websockets.json",
@@ -33,7 +33,7 @@
     "files-scs:config/util/logging/winston.json",
     "files-scs:config/util/representation-conversion/default.json",
     "files-scs:config/util/resource-locker/memory.json",
-    "files-scs:config/util/variables/default.json"
+    "/usr/app/config/variables/variables.json"
   ],
   "@graph": [
     {

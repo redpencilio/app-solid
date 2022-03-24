@@ -1,0 +1,25 @@
+{
+  "@context": "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^3.0.0/components/context.jsonld",
+  "import": ["/usr/app/config/variables/variables.json"],
+  "@graph": [
+    {
+      "@id": "urn:solid-server:default:EmailSender",
+      "@type": "BaseEmailSender",
+      "args_senderName": {
+        "@id": "urn:solid-server:default:variable:emailSenderName"
+      },
+      "args_emailConfig_host": {
+        "@id": "urn:solid-server:default:variable:emailHost"
+      },
+      "args_emailConfig_port": {
+        "@id": "urn:solid-server:default:variable:emailPort"
+      },
+      "args_emailConfig_auth_user": {
+        "@id": "urn:solid-server:default:variable:emailUser"
+      },
+      "args_emailConfig_auth_pass": {
+        "@id": "urn:solid-server:default:variable:emailPassword"
+      }
+    }
+  ]
+}
