@@ -6,7 +6,7 @@ x-logging: &default-logging
 
 services:
   solid-server:
-    image: redpencil/mashlib-solid-server:0.0.8
+    image: redpencil/mashlib-solid-server:0.0.9
     volumes:
       - ./config/solid/:/config/
 
