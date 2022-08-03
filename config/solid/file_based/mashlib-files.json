@@ -1,8 +1,5 @@
 {
-  "@context": [
-    "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^3.0.0/components/context.jsonld",
-    "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server-metadata-extender/^3.0.0/components/context.jsonld"
-  ],
+  "@context": "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^4.0.0/components/context.jsonld",
   "import": [
     "files-scs:config/app/main/default.json",
 
@@ -43,7 +40,7 @@
       ]
     },
     {
-      "@context": "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^3.0.0/components/context.jsonld",
+      "@context": "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^4.0.0/components/context.jsonld",
       "import": ["files-scs:config/app/init/base/init.json"],
       "@graph": [
         {
@@ -56,7 +53,7 @@
     },
 
     {
-      "@context": "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^3.0.0/components/context.jsonld",
+      "@context": "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^4.0.0/components/context.jsonld",
       "@graph": [
         {
           "comment": "Makes sure the root container exists and contains the necessary resources.",
@@ -127,22 +124,10 @@
       "auxiliaryStrategy": {
         "@id": "urn:solid-server:default:AuxiliaryStrategy"
       },
-      "accessor": { "@id": "urn:solid-server:default:MetadataExtender" }
+      "accessor": { "@id": "urn:solid-server:default:FileDataAccessor" }
     },
-
     {
-      "comment": "Extend files with extra metadata.",
-      "@id": "urn:solid-server:default:MetadataExtender",
-      "@type": "MetadataExtender",
-      "options_ianaType": true,
-      "options_statSize": true,
-      "options_dctModified": true,
-      "options_statMtime": true,
-      "source": { "@id": "urn:solid-server:default:FileDataAccessor" }
-    },
-
-    {
-      "@context": "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^3.0.0/components/context.jsonld",
+      "@context": "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^4.0.0/components/context.jsonld",
       "@graph": [
         {
           "comment": "Stores all new resources for a pod in the default resource store under the generated identifier.",
