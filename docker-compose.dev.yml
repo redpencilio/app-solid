@@ -1,7 +1,13 @@
 services:
+  proxy:
+    ports:
+      - 88:80
   solid-server:
     ports:
       - 3000:3000
-  triplestore:
-    ports:
-      - 8890:8890
+    environment:
+      BASE_URL: "${BASE_URL:-http://localhost:88/}"
+
+  # triplestore:
+  #   ports:
+  #     - 8890:8890

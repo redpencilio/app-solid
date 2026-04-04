@@ -13,7 +13,7 @@
     "files-scs:config/http/server-factory/websockets.json",
     "files-scs:config/http/static/default.json",
     "files-scs:config/identity/access/public.json",
-    "/config/account_recovery/email.json",
+    "files-scs:config/identity/email/default.json",
     "files-scs:config/identity/handler/default.json",
     "files-scs:config/identity/ownership/token.json",
 
@@ -90,7 +90,7 @@
       "@id": "urn:solid-server:default:DefaultUiConverter",
       "@type": "ConstantConverter",
       "contentType": "text/html",
-      "filePath": "./node_modules/mashlib/dist/databrowser.html",
+      "filePath": "./custom/databrowser.html",
       "options_container": true,
       "options_document": true,
       "options_minQuality": 1,
@@ -113,6 +113,14 @@
         {
           "StaticAssetHandler:_assets_key": "/mashlib.min.js.map",
           "StaticAssetHandler:_assets_value": "./node_modules/mashlib/dist/mashlib.min.js.map"
+        },
+        {
+          "StaticAssetHandler:_assets_key": "/redpencil-theme.css",
+          "StaticAssetHandler:_assets_value": "./custom/redpencil-theme.css"
+        },
+        {
+          "StaticAssetHandler:_assets_key": "/.well-known/css/styles/main.css",
+          "StaticAssetHandler:_assets_value": "./custom/idp-theme.css"
         }
       ]
     },

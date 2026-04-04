@@ -102,7 +102,7 @@
       "@id": "urn:solid-server:default:DefaultUiConverter",
       "@type": "ConstantConverter",
       "contentType": "text/html",
-      "filePath": "./node_modules/mashlib/dist/databrowser.html",
+      "filePath": "./custom/databrowser.html",
       "options_container": true,
       "options_document": true,
       "options_minQuality": 1,
@@ -124,6 +124,14 @@
         {
           "StaticAssetHandler:_assets_key": "/mashlib.min.js.map",
           "StaticAssetHandler:_assets_value": "./node_modules/mashlib/dist/mashlib.min.js.map"
+        },
+        {
+          "StaticAssetHandler:_assets_key": "/redpencil-theme.css",
+          "StaticAssetHandler:_assets_value": "./custom/redpencil-theme.css"
+        },
+        {
+          "StaticAssetHandler:_assets_key": "/",
+          "StaticAssetHandler:_assets_value": "./custom/welcome.html"
         }
       ]
     },
