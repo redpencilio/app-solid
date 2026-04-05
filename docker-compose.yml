@@ -5,14 +5,6 @@ x-logging: &default-logging
     max-file: "3"
 
 services:
-  proxy:
-    image: nginx:alpine
-    volumes:
-      - ./config/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
-      - ./frontend:/usr/share/nginx/html:ro
-    depends_on:
-      - solid-server
-
   solid-server:
     build:
       context: ../mashlib-solid-server
