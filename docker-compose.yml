@@ -10,7 +10,9 @@ services:
       context: ../mashlib-solid-server
     volumes:
       - ./config/solid/:/config/
-      - ./templates/:/templates/
+      - ./config/templates/:/templates/
+      - ../mashlib-solid-server/custom/:/usr/app/custom/
+      - ./data/pods:/usr/app/data
     environment:
       SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
       CONFIG_FILE: "/config/file_based/mashlib-files.json"

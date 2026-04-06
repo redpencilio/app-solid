@@ -9,10 +9,10 @@
 
 <{{webId}}>
     {{#if name}}foaf:name "{{name}}";{{/if}}
-    space:storage <{{podBaseUrl}}>;
-    ldp:inbox <{{podBaseUrl}}inbox/>;
-    space:preferencesFile <{{podBaseUrl}}settings/prefs>;
-    solid:privateTypeIndex <{{podBaseUrl}}settings/privateTypeIndex>;
-    solid:publicTypeIndex <{{podBaseUrl}}settings/publicTypeIndex>;
+    space:storage <{{base.path}}>;
+    ldp:inbox <{{base.path}}inbox/>;
+    space:preferencesFile <{{base.path}}settings/prefs>;
+    solid:privateTypeIndex <{{base.path}}settings/privateTypeIndex>;
+    solid:publicTypeIndex <{{base.path}}settings/publicTypeIndex>;
     {{#if oidcIssuer}}solid:oidcIssuer <{{oidcIssuer}}>;{{/if}}
     a foaf:Person.
