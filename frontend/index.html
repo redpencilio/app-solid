@@ -197,7 +197,7 @@
     footer a { color: var(--text-2); text-decoration: underline; text-underline-offset: 2px; }
   </style>
 </head>
-<body>
+<body style="visibility:hidden">
 <div class="page">
 
   <header>
@@ -253,5 +253,23 @@
   </footer>
 
 </div>
+
+<script>
+  // If the user has an active session, redirect them to their account dashboard
+  // instead of showing the marketing page.  CSS v7 returns 200 + JSON from
+  // /.account/ when the request carries a valid session cookie; 401 otherwise.
+  fetch('/.account/', {
+    credentials: 'include',
+    headers: { 'Accept': 'application/json' },
+  }).then(function(res) {
+    if (res.ok && window.location.pathname === '/') {
+      window.location.replace('/.account/');
+    } else {
+      document.body.style.visibility = 'visible';
+    }
+  }).catch(function() {
+    document.body.style.visibility = 'visible';
+  });
+</script>
 </body>
 </html>
