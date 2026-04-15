@@ -6,26 +6,6 @@ x-logging: &default-logging
 
 services:
   solid-server:
-    build:
-      context: ../mashlib-solid-server
+    image: redpencil/mashlib-solid-server:feature-design-tryouts
     volumes:
-      - ./config/solid/:/config/
-      - ./config/templates/:/templates/
-      - ../mashlib-solid-server/custom/:/usr/app/custom/
       - ./data/pods:/usr/app/data
-    environment:
-      SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
-      CONFIG_FILE: "/config/file_based/mashlib-files.json"
-      ROOT_FILE_PATH: "./data"
-
-  # triplestore:
-  #   image: tenforce/virtuoso:1.3.1-virtuoso7.2.2
-  #   environment:
-  #     SPARQL_UPDATE: "true"
-  #     DEFAULT_GRAPH: "http://mu.semte.ch/application"
-  #   volumes:
-  #     - ./data/virtuoso:/data
-  #     - ./config/virtuoso/virtuoso.ini:/data/virtuoso.ini
-  #   labels:
-  #     - "logging=true"
-  #   logging: *default-logging
