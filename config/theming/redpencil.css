@@ -1,0 +1,184 @@
+/* Redpencil theme for SolidOS (mashlib 2.2 design tokens).
+   Loads the stock mashlib stylesheet first, then remaps the token palette. */
+@import url("/mash-origin.css");
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap");
+
+:root {
+  /* brand palette (same tokens as the landing page) */
+  --red: #e03c3c;
+  --red-dk: #c53333;
+  --red-tint: rgba(251, 83, 83, 0.08);
+  --text: #18181b;
+  --text-2: #52525b;
+  --border: #e4e4e7;
+
+  /* primary action = redpencil red */
+  --lavender-900: --red;
+  --lavender-700: #e03c3c;
+  --lavender-500: #f98a8a;
+  --lavender-400: #fbb1b1;
+  --lavender-300: #fccfcf;
+  --lavender-200: #fde7e7;
+
+  /* neutrals */
+  --grey-purple-200: #e4e4e7;
+  --grey-purple-300: #a1a1aa;
+  --grey-purple-500: #52525b;
+  --grey-purple-700: #18181b;
+  --grey-purple-900: #18181b;
+  --color-accent: --red;
+  --color-background: #ffffff;
+  --color-background-r: #f9f9fb;
+  --color-header-text: #ffffff;
+  --color-error: #b00020;
+  --border-color: #e4e4e7;
+
+  /* sidebar + header chrome (stock defs resolve to lavender tints; map them to the brand) */
+  --color-header-menu-item-hover: var(--red-tint);
+  --color-header-menu-item-selected: var(--red-dk);
+  --color-header-menu-item-text-selected: #ffffff;
+  --color-menu-item-selected: var(--red-dk);
+  --color-menu-item-text-selected: #ffffff;
+  --color-header-menu-item-text-selected: #ffffff;
+  --color-header-menu-loggedin-bg: #18181b;
+  --color-menu-bg: #ffffff;
+  --color-menu-item-text: #52525b;
+  --color-menu-item-active: --red;
+  --color-text-heading: #18181b;
+  --color-header-button-text: #ffffff;
+  --color-header-button-detail-text: #ffffff;
+
+  /* old palette names still resolved inside components; keep them on-brand */
+  --purple-500: --red;
+  --purple-700: #e03c3c;
+  --slate-200: #e4e4e7;
+  --color-header-shadow: 0 1px 4px rgba(24, 24, 27, 0.10);
+
+  /* white banner like the homepage */
+  --color-header-row-bg: #ffffff;
+  --color-header-separator-line: #e4e4e7;
+  --color-header-menu-separator-line: #e4e4e7;
+  --color-header-border: #e4e4e7;
+  --color-border: #e4e4e7;
+  --color-header-text: #18181b;
+  --color-header-button-text: #18181b;
+  --color-header-button-detail-text: #71717a;
+  --color-header-shadow: none;
+}
+
+solid-ui-header {
+  display: block;
+  border-bottom: 1px solid #e4e4e7;
+  --login-button-text: #ffffff;
+  --signup-button-text: #18181b;
+  --signup-button-border: #18181b;
+}
+
+/* header chrome via shadow parts */
+solid-ui-header::part(logo) {
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Ccircle cx='5' cy='5' r='5' fill='%23e03c3c'/%3E%3C/svg%3E");
+  width: 10px;
+  height: 10px;
+}
+solid-ui-header::part(brand) {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+solid-ui-header::part(brand)::after {
+  content: "solid.redpencil.io";
+  font-family: "Lexend Deca", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+/* left-menu / triggers: red outline on hover, darker red click-targets */
+solid-ui-header::part(account-menu-trigger),
+solid-ui-header::part(help-menu-trigger),
+solid-ui-header::part(account-menu-item),
+solid-ui-header::part(help-menu-item) {
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+solid-ui-header::part(account-menu-trigger):hover,
+solid-ui-header::part(help-menu-trigger):hover {
+  border-color: var(--red);
+}
+solid-ui-header::part(account-menu-item:active),
+solid-ui-header::part(help-menu-item:active) {
+  background-color: var(--red-dk);
+  color: #ffffff;
+}
+
+/* classic UI: Edit / "+ Add More" / action buttons in brand red instead of violet */
+solid-ui-button,
+solid-ui-button.profile__action-button,
+.profile__action-button {
+  --button-background: transparent;
+  --button-text: var(--red-dk);
+  --button-text-disabled: #a1a1aa;
+  --button-border: var(--red);
+  --button-hover-background: var(--red-tint);
+  --button-hover-border: var(--red-dk);
+  --button-hover-text: var(--red-dk);
+  --button-background-active: var(--red-dk);
+  --button-text-active: #ffffff;
+}
+
+/* section-header "Add more"/"Edit" chrome (violet-scoped tokens in stock css);
+   define at :root too so any container resolves our values outside __actions */
+:root,
+.profile-section-collapsible__actions {
+  --profile-section-collapsible-action-button-text: var(--red-dk);
+  --profile-section-collapsible-action-button-hover-background: var(--red-tint);
+}
+:root {
+  --color-primary: var(--red-dk);
+  --color-surface-accent-subtle: var(--red-tint);
+}
+.profile-section-collapsible__edit-icon--add svg path {
+  fill: var(--red) !important;
+  stroke: var(--red) !important;
+}
+
+/* violet-tinted hover bgs that stock css hard-codes as rgba() */
+solid-ui-button.profile__btn-contacts,
+solid-ui-button.profile-action-text {
+  --button-hover-background: var(--red-tint);
+}
+.profile-action-text {
+  color: var(--red-dk);
+}
+
+/* dropdown popups: highlighted = tint, selected = red with white text.
+   popups portal themselves into a plain div under #profile-modal (outside
+   solid-ui-select's shadow), so override the vars on that host too */
+dialog#profile-modal > div,
+solid-ui-select,
+solid-ui-combobox {
+  --item-text: var(--text);
+  --item-hover-background: var(--red-tint);
+  --item-selected-background: var(--red);
+  --item-selected-text: #ffffff;
+}
+solid-ui-select::part(option),
+solid-ui-combobox::part(option) {
+  color: var(--text);
+}
+solid-ui-select::part(option):hover,
+solid-ui-combobox::part(option):hover {
+  background-color: var(--red-tint);
+}
+solid-ui-select::part(selected-option),
+solid-ui-select::part(active-option),
+solid-ui-combobox::part(selected-option) {
+  background-color: var(--red) !important;
+  color: #ffffff !important;
+}
+
+body {
+  font-family: "Lexend Deca", -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}

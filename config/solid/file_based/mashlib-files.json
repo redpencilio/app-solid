@@ -61,6 +61,30 @@
           "@type": "StaticAssetEntry",
           "relativeUrl": "/",
           "filePath": "./node_modules/mashlib/dist/"
+        },
+        {
+          "comment": "Theme: served instead of the dist mash.css; imports it via /mash-origin.css.",
+          "@type": "StaticAssetEntry",
+          "relativeUrl": "/mash.css",
+          "filePath": "/config/theming/redpencil.css"
+        },
+        {
+          "comment": "Alias so the themed stylesheet can import the stock mash.css.",
+          "@type": "StaticAssetEntry",
+          "relativeUrl": "/mash-origin.css",
+          "filePath": "./node_modules/mashlib/dist/mash.css"
+        },
+        {
+          "comment": "Theme: branded identity pages (/.account/*, /idp/*) instead of the stock main.css.",
+          "@type": "StaticAssetEntry",
+          "relativeUrl": "/.well-known/css/styles/main.css",
+          "filePath": "/config/theming/idp.css"
+        },
+        {
+          "comment": "Theme: redpencil dot instead of the stock Solid logo on identity pages.",
+          "@type": "StaticAssetEntry",
+          "relativeUrl": "/.well-known/css/images/solid.svg",
+          "filePath": "/config/theming/logo-dot.svg"
         }
       ]
     },

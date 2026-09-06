@@ -9,21 +9,11 @@ services:
     image: redpencil/mashlib-solid-server:feature-upgrade-css-and-mashlib
     volumes:
       - ./config/solid/:/config/
-
-      - ./templates/:/templates/
+      # Theme tokens (config-only theming of the SolidOS shell and login widgets):
+      - ./config/theming/:/config/theming/
+      - ./config/landingpage/:/config/landingpage/
+      - ./config/landingpage/base/index.html:/usr/app/data/index.html
+      - ./config/templates/:/templates/
     environment:
-      CSS_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
       CSS_CONFIG: "/config/file_based/mashlib-files.json"
       CSS_ROOT_FILE_PATH: "./data"
-
-  triplestore:
-    image: tenforce/virtuoso:1.3.1-virtuoso7.2.2
-    environment:
-      SPARQL_UPDATE: "true"
-      DEFAULT_GRAPH: "http://mu.semte.ch/application"
-    volumes:
-      - ./data/virtuoso:/data
-      - ./config/virtuoso/virtuoso.ini:/data/virtuoso.ini
-    labels:
-      - "logging=true"
-    logging: *default-logging

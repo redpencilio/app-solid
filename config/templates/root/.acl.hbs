@@ -1,0 +1,11 @@
+# Root container ACL
+# Public agents may read the root container so that Mashlib can render it
+# without forcing an immediate login.  No write or control access is granted.
+@prefix acl: <http://www.w3.org/ns/auth/acl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+
+<#public>
+    a acl:Authorization;
+    acl:agentClass foaf:Agent;
+    acl:accessTo <./>;
+    acl:mode acl:Read.
