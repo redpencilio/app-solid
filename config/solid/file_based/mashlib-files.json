@@ -90,6 +90,16 @@
     },
 
     {
+      "comment": "Generate new pods from the checked-out templates instead of the stock CSS templates.",
+      "@type": "Override",
+      "overrideInstance": { "@id": "urn:solid-server:default:PodResourcesGenerator" },
+      "overrideParameters": {
+        "@type": "StaticFolderGenerator",
+        "templateFolder": "/templates/pod"
+      }
+    },
+
+    {
       "comment": "Allow legacy --email* flags until this is miigrated.",
       "@type": "Override",
       "overrideInstance": { "@id": "urn:solid-server-app-setup:default:CliExtractor" },
