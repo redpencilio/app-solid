@@ -13,8 +13,8 @@
   --border: #e4e4e7;
 
   /* primary action = redpencil red */
-  --lavender-900: --red;
-  --lavender-700: #e03c3c;
+  --lavender-900: var(--red, #e03c3c);
+  --lavender-700: var(--red-dk, #c53333);
   --lavender-500: #f98a8a;
   --lavender-400: #fbb1b1;
   --lavender-300: #fccfcf;
@@ -26,7 +26,7 @@
   --grey-purple-500: #52525b;
   --grey-purple-700: #18181b;
   --grey-purple-900: #18181b;
-  --color-accent: --red;
+  --color-accent: var(--red, #e03c3c);
   --color-background: #ffffff;
   --color-background-r: #f9f9fb;
   --color-header-text: #ffffff;
@@ -43,13 +43,13 @@
   --color-header-menu-loggedin-bg: #18181b;
   --color-menu-bg: #ffffff;
   --color-menu-item-text: #52525b;
-  --color-menu-item-active: --red;
+  --color-menu-item-active: var(--red, #e03c3c);
   --color-text-heading: #18181b;
   --color-header-button-text: #ffffff;
   --color-header-button-detail-text: #ffffff;
 
   /* old palette names still resolved inside components; keep them on-brand */
-  --purple-500: --red;
+  --purple-500: var(--red, #e03c3c);
   --purple-700: #e03c3c;
   --slate-200: #e4e4e7;
   --color-header-shadow: 0 1px 4px rgba(24, 24, 27, 0.10);
@@ -72,6 +72,23 @@ solid-ui-header {
   --login-button-text: #ffffff;
   --signup-button-text: #18181b;
   --signup-button-border: #18181b;
+}
+
+/* login button + its popup: outer rules here win over the component's :host
+   defaults, giving one consistent red button scheme everywhere */
+solid-ui-login-button {
+  --login-button-background: var(--red, #e03c3c);
+  --login-button-text: #ffffff;
+  --issuer-button-hover-background: var(--red-dk, #c53333);
+}
+
+/* the header mounts solid-ui-login-button as a custom element whose own :host
+   maps ->login-button-text onto --color-header-text (dark on the white banner);
+   setting the variable per part wins, as with the block above */
+solid-ui-header::part(login-action),
+solid-ui-header::part(sign-up-action) {
+  --login-button-text: #ffffff;
+  --signup-button-text: #18181b;
 }
 
 /* header chrome via shadow parts */
